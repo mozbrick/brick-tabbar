@@ -1,0 +1,26 @@
+{
+  "name": "x-tabbar",
+  "version": "0.0.0",
+  "homepage": "https://github.com/dotch/x-tabbar",
+  "authors": [
+    "mozilla"
+  ],
+  "description": "A box in which slides can be cycled and replaced with in a variety of different orders and transitions",
+  "main": "src/element.html",
+  "keywords": [
+    "brick",
+    "webcomponents"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "brick-common": "*",
+    "platform": "Polymer/platform"
+  }
+}

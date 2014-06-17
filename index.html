@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
+    <title>x-tabbar</title>
+
+    <!-- Importing Polyfill -->
+    <script src="bower_components/platform/platform.js"></script>
+
+    <!-- Importing Custom Elemenent -->
+    <link rel="import" href="src/element.html">
+  </head>
+  <body>
+    <div id="a">a</div>
+    <div id="b">b</div>
+    <div id="c">c</div>
+
+    <!-- Using Custom Element -->
+    <x-tabbar>
+      <x-tabbar-tab target-selector="#a" selected>1</x-tabbar-tab>
+      <x-tabbar-tab target-selector="#b">2</x-tabbar-tab>
+      <x-tabbar-tab target-selector="#c">3</x-tabbar-tab>
+    </x-tabbar>
+
+  </body>
+</html>
