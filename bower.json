@@ -22,5 +22,8 @@
   "dependencies": {
     "brick-common": "*",
     "platform": "Polymer/platform"
+  },
+  "devDependencies": {
+    "x-deck": "dotch/x-deck"
   }
 }
