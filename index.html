@@ -39,8 +39,8 @@
       #demo-box{
           margin: 0 auto;
 
-          width: 150px;
-          height: 220px;
+          width: 320px;
+          height: 480px;
           border: 4px solid grey;
           background-color: #333;
       }
@@ -74,31 +74,25 @@
           text-shadow: 1px 1px 10px black;
       }
 
-      body .codebox{
-          display: inline-block;
-          max-height: 15em;
-          max-width: 100%;
-          overflow:auto;
-          margin: 0 auto;
-          padding: .5em;
-          padding-right: 1.5em;
-          text-align: left;
+      #a {
+        background-color: red;
       }
 
-      #property-wrap{
-          border: 1px solid grey;
+      #b {
+        background-color: orange;
       }
 
-      #property-wrap code{
-          display: block;
-          text-align: left;
-          white-space: nowrap;
+      #c {
+        background-color: yellow;
       }
-
-      @media screen and (max-width: 800px) {
-          .code-box{
-              font-size: .75em;
-          }
+      #demo-bar {
+        margin: 0 auto;
+        width: 320px;
+      }
+      #demo-bar x-tabbar-tab {
+        border: 1px solid grey;
+        padding: 5px;
+        cursor: pointer;
       }
     </style>
 
@@ -110,7 +104,7 @@
         <x-card id="c">2</x-card>
     </x-deck>
     <!-- Using Custom Element -->
-    <x-tabbar>
+    <x-tabbar id="demo-bar">
       <x-tabbar-tab target-selector="#a" selected>0</x-tabbar-tab>
       <x-tabbar-tab target-selector="#b">1</x-tabbar-tab>
       <x-tabbar-tab target-selector="#c">2</x-tabbar-tab>
