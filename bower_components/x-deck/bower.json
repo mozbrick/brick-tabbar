@@ -1,11 +1,11 @@
 {
-  "name": "x-tabbar",
-  "version": "0.0.0",
-  "homepage": "https://github.com/dotch/x-tabbar",
+  "name": "x-deck",
+  "version": "0.0.1",
+  "homepage": "https://github.com/dotch/x-deck",
   "authors": [
     "mozilla"
   ],
-  "description": "A box in which slides can be cycled and replaced with in a variety of different orders and transitions",
+  "description": "A box element in which cards can be cycled independently of order with a variety of different transitions",
   "main": "src/element.html",
   "keywords": [
     "brick",
@@ -22,8 +22,5 @@
   "dependencies": {
     "brick-common": "*",
     "platform": "Polymer/platform"
-  },
-  "devDependencies": {
-    "x-deck": "dotch/x-deck"
   }
 }

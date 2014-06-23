@@ -1,10 +1,10 @@
-# x-tabbar
+# x-deck
 
 > A [Brick](https://github.com/mozilla/brick/) custom element starter-kit.
 
 ## Demo
 
-[Check it live!](http://dotch.github.io/x-tabbar)
+[Check it live!](http://dotch.github.io/x-deck)
 
 ## Usage
 
@@ -23,23 +23,14 @@
 3. Start using it:
 
     ```html
-
-    <x-tabbar>
-      <x-tabbar-tab target-selector="">1</x-tabbar-tab>
-      <x-tabbar-tab target-selector="">2</x-tabbar-tab>
-      <x-tabbar-tab target-selector="">3</x-tabbar-tab>
-    </x-tabbar>
+    <x-deck></x-deck>
     ```
 
 ## Options
-`<x-tabbar>`
-Attribute         | Options     | Default      | Description
----               | ---         | ---          | ---
-`target-selector` | *string*    |              | 
 
-Accessors         | Options     | Default      | Description
----               | ---         | ---          | ---
-`target-selector` | *string*    |              | 
+Attribute     | Options     | Default      | Description
+---           | ---         | ---          | ---
+`foo`         | *string*    | `bar`        | An Attribute.
 
 ## Methods
 
