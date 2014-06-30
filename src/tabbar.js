@@ -1,52 +1,41 @@
-// todo:
-// click + tap
-// targetElems
-
 (function () {
 
-  function delegate(delegateEl, type, selector, handler) {
-    delegateEl.addEventListener(type, function(event) {
-      var target = event.target;
+  function delegate(selector, handler) {
+    return function(e) {
+      var target = e.target;
+      var delegateEl = e.currentTarget;
       var matches = delegateEl.querySelectorAll(selector);
       for (var el = target; el.parentNode && el !== delegateEl; el = el.parentNode) {
         for (var i = 0; i < matches.length; i++) {
           if (matches[i] === el) {
-            handler.call(el, event);
+            handler.call(el, e);
             return;
           }
         }
       }
-    });
+    };
   }
 
   function _selectTab(tabEl) {
-    var activeTab = tabEl.parentNode.querySelectorAll('x-tabbar-tab[selected]');
+    var activeTab = tabEl.parentNode.querySelectorAll('brick-tabbar-tab[selected]');
     for (var i = 0; i < activeTab.length; i++) {
       activeTab[i].removeAttribute('selected');
     }
     tabEl.setAttribute('selected', true);
   }
 
-  var TabbarPrototype = Object.create(HTMLElement.prototype);
+  var BrickTabbarElementPrototype = Object.create(HTMLElement.prototype);
 
-  // Lifecycle methods
-
-  TabbarPrototype.attachedCallback = function () {
+  BrickTabbarElementPrototype.attachedCallback = function () {
     var self = this;
     self.settings = {};
-    self.settings.overallEventToFire = this.getAttribute("target-event") ||
-                                       "reveal";
-    delegate(self,"select","x-tabbar-tab",function(){
-      console.log("delegate select");
-      _selectTab(this);
-    });
-    delegate(self,"click","x-tabbar-tab",function(){
-      console.log("delegate click");
-      _selectTab(this);
-    });
+    self.settings.overallEventToFire = this.getAttribute("target-event") || "reveal";
+    self.selectHandler = delegate("brick-tabbar-tab", function(){ _selectTab(this); });
+    delegate(self,"select","brick-tabbar-tab", self.selectHandler);
+    delegate(self,"click","brick-tabbar-tab", self.selectHandler);
   };
 
-  TabbarPrototype.attributeChangedCallback = function (attr, oldVal, newVal) {
+  BrickTabbarElementPrototype.attributeChangedCallback = function (attr, oldVal, newVal) {
     if (attr in attrs) {
       attrs[attr].call(this, oldVal, newVal);
     }
@@ -58,7 +47,7 @@
     }
   };
 
-  Object.defineProperties(TabbarPrototype, {
+  Object.defineProperties(BrickTabbarElementPrototype, {
     'targetEvent': {
       get : function () {
         return this.settings.overallEventToFire;
@@ -70,8 +59,8 @@
     }
   });
 
-  window.Tabbar = document.registerElement('x-tabbar', {
-    prototype: TabbarPrototype
+  window.BrickTabbarElement = document.registerElement('brick-tabbar', {
+    prototype: BrickTabbarElementPrototype
   });
 
 })();

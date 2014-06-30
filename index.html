@@ -3,75 +3,72 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1">
-    <title>x-tabbar</title>
+    <title>brick-tabbar</title>
 
     <!-- Importing Polyfill -->
     <script src="bower_components/platform/platform.js"></script>
 
     <!-- Importing Custom Elemenent -->
-    <link rel="import" href="src/element.html">
+    <link rel="import" href="src/brick-tabbar.html">
 
-    <!-- Importing x-deck for demo porpuses -->
-    <link rel="import" href="bower_components/x-deck/src/element.html">
+    <link rel="import" href="bower_components/brick-deck/src/brick-deck.html">
 
     <style type="text/css">
       /** Defining custom styles:
 
-          Besides applying custom styles to the x-deck and x-cards
+          Besides applying custom styles to the brick-deck and brick-cards
           themselves, you can define styles for the following selectors to
           determine how the widget appears during animations
 
-          x-card[leaving]  => defines how a card looks when in the middle
+          brick-card[leaving]  => defines how a card looks when in the middle
                                of transitioning out of frame
-          x-card[selected] => defines how the currently selected card looks
+          brick-card[selected] => defines how the currently selected card looks
       **/
 
       html, body{
-          width: 100%;
-          height: 100%;
-          overflow: auto;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
       }
 
       #demo-controls{
-          text-align: center;
+        text-align: center;
       }
 
       #demo-box{
-          margin: 0 auto;
-
-          width: 320px;
-          height: 480px;
-          border: 4px solid grey;
-          background-color: #333;
+        margin: 0 auto;
+        width: 320px;
+        height: 480px;
+        background-color: #333;
       }
 
-      #demo-box x-card{
-          text-align:center;
-          font-size: 5em;
-          line-height: 1em;
-          padding: 50% 0;
+      #demo-box brick-card{
+        text-align:center;
+        font-size: 5em;
+        line-height: 1em;
+        padding: 50% 0;
       }
 
-      #demo-box x-card[transition-override]:after{
-          content: "transition-override = " attr(transition-override);
-          font-size: .25em;
-          line-height: 1em;
-          display: block;
+      #demo-box brick-card[transition-override]:after{
+        content: "transition-override = " attr(transition-override);
+        font-size: .25em;
+        line-height: 1em;
+        display: block;
       }
 
-      #demo-box x-card[leaving]:before{
-          content: "";
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          background-color: rgba(0,0,0,0.3);
+      #demo-box brick-card[leaving]:before{
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.3);
       }
 
-      #demo-box x-card[selected]{
-          color: white;
-          text-shadow: 1px 1px 10px black;
+      #demo-box brick-card[selected]{
+        color: white;
+        text-shadow: 1px 1px 10px black;
       }
 
       #a {
@@ -89,26 +86,24 @@
         margin: 0 auto;
         width: 320px;
       }
-      #demo-bar x-tabbar-tab {
+      #demo-bar brick-tabbar-tab {
         border: 1px solid grey;
         padding: 5px;
         cursor: pointer;
       }
     </style>
-
   </head>
   <body>
-    <x-deck id="demo-box" selected-index="0">
-        <x-card id="a" selected>0</x-card>
-        <x-card id="b">1</x-card>
-        <x-card id="c">2</x-card>
-    </x-deck>
+    <brick-deck id="demo-box" selected-index="0">
+      <brick-card id="a" selected>0</brick-card>
+      <brick-card id="b">1</brick-card>
+      <brick-card id="c">2</brick-card>
+    </brick-deck>
     <!-- Using Custom Element -->
-    <x-tabbar id="demo-bar">
-      <x-tabbar-tab target-selector="#a" selected>0</x-tabbar-tab>
-      <x-tabbar-tab target-selector="#b">1</x-tabbar-tab>
-      <x-tabbar-tab target-selector="#c">2</x-tabbar-tab>
-    </x-tabbar>
-
+    <brick-tabbar id="demo-bar">
+      <brick-tabbar-tab target-selector="#a" selected>0</brick-tabbar-tab>
+      <brick-tabbar-tab target-selector="#b">1</brick-tabbar-tab>
+      <brick-tabbar-tab target-selector="#c">2</brick-tabbar-tab>
+    </brick-tabbar>
   </body>
 </html>

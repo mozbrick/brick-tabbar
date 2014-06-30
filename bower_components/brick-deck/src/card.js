@@ -1,14 +1,16 @@
-// remove last card is still buggy if selected
-
 (function () {
 
-  var CardPrototype = Object.create(HTMLElement.prototype);
+  var BrickCardElementPrototype = Object.create(HTMLElement.prototype);
 
-  CardPrototype.attachedCallback = function () {
+  BrickCardElementPrototype.createdCallback = function () {
+    this.ns = {};
+  };
+
+  BrickCardElementPrototype.attachedCallback = function () {
     this.ns = {};
     this.ns.selected = this.hasAttribute("selected");
     var deck = this.parentNode;
-    if (deck.nodeName.toLowerCase() === 'x-deck') {
+    if (deck.nodeName.toLowerCase() === 'brick-deck') {
       this.ns.deck = deck;
       if (this !== deck.selectedCard && this.selected) {
         deck.showCard(this);
@@ -16,7 +18,7 @@
     }
   };
 
-  CardPrototype.detachedCallback = function () {
+  BrickCardElementPrototype.detachedCallback = function () {
     var deck = this.ns.deck;
     if (deck) {
       if (this === deck.selectedCard) {
@@ -29,7 +31,7 @@
     }
   };
 
-  CardPrototype.attributeChangedCallback = function (attr, oldVal, newVal) {
+  BrickCardElementPrototype.attributeChangedCallback = function (attr, oldVal, newVal) {
     if (attr in attrs) {
       attrs[attr].call(this, oldVal, newVal);
     }
@@ -43,7 +45,7 @@
   };
 
   // Property handlers
-  Object.defineProperties(CardPrototype, {
+  Object.defineProperties(BrickCardElementPrototype, {
     'selected': {
       get : function () {
         return this.ns.selected;
@@ -78,8 +80,8 @@
   });
 
   // Register the element
-  window.CustomElement = document.registerElement('x-card', {
-    prototype: CardPrototype
+  window.BrickCardElement = document.registerElement('brick-card', {
+    prototype: BrickCardElementPrototype
   });
 
 })();

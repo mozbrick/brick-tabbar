@@ -1,14 +1,14 @@
 {
-  "name": "x-deck",
+  "name": "brick-deck",
   "version": "0.0.1",
-  "description": "A box element in which cards can be cycled independently of order with a variety of different transitions",
-  "main": "element.html",
+  "description": "A box element in which cards can be cycled independently of order with a variety of different transitions.",
+  "main": "brick-deck.html",
   "scripts": {
     "test": "./node_modules/karma/bin/karma start karma.conf.js --single-run"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/dotch/x-deck.git"
+    "url": "git://github.com/mozbrick/brick-deck.git"
   },
   "keywords": [
     "brick",
@@ -17,9 +17,9 @@
   "author": "mozilla",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/dotch/x-deck/issues"
+    "url": "https://github.com/mozbrick/brick-deck/issues"
   },
-  "homepage": "https://github.com/dotch/x-deck",
+  "homepage": "https://github.com/mozbrick/brick-deck",
   "devDependencies": {
     "chai": "^1.9.1",
     "gulp": "^3.7.0",

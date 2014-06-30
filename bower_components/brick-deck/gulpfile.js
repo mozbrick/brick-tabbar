@@ -10,7 +10,7 @@ var karma = require('gulp-karma');
 var stylus = require('gulp-stylus');
 
 var paths = {
-  'main': 'src/element.html',
+  'main': 'src/brick-deck.html',
   'scripts': 'src/*.js',
   'stylesheets': 'src/*.styl',
   'src': 'src/*',
@@ -28,7 +28,7 @@ gulp.task('lint', function() {
 gulp.task('styles', function() {
   gulp.src(paths.stylesheets)
     .pipe(stylus())
-    .pipe(concat('element.css'))
+    .pipe(concat('brick-deck.css'))
     .pipe(gulp.dest('src'));
 });
 
