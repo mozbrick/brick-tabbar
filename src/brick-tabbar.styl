@@ -1,8 +1,7 @@
 @import '../bower_components/brick-common/styles/mixins'
 @import '../bower_components/brick-common/styles/params'
 
-x-tabbar{
-
+brick-tabbar{
     display: block;
     flexbox();
     width: 100%;
@@ -10,16 +9,14 @@ x-tabbar{
     white-space: nowrap;
     text-align: center;
 
-    & > x-tabbar-tab{
+    & > brick-tabbar-tab{
         flex(1);
 
         box-sizing(border-box);
         display: inline-block;
         min-width:auto;
         min-height:auto;
-
         vertical-align: middle;
-
         & > *:only-child{
             vertical-align: top;
             height: 100%;

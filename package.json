@@ -1,14 +1,14 @@
 {
-  "name": "x-tabbar",
-  "version": "0.0.1",
-  "description": "A box in which slides can be cycled and replaced with in a variety of different orders and transitions",
-  "main": "element.html",
+  "name": "brick-tabbar",
+  "version": "0.0.0",
+  "description": "A tabbar component.",
+  "main": "brick-tabbar.html",
   "scripts": {
     "test": "./node_modules/karma/bin/karma start karma.conf.js --single-run"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/dotch/x-tabbar.git"
+    "url": "git://github.com/mozbrick/brick-tabbar.git"
   },
   "keywords": [
     "brick",
@@ -17,9 +17,9 @@
   "author": "mozilla",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/dotch/x-tabbar/issues"
+    "url": "https://github.com/mozbrick/brick-tabbar/issues"
   },
-  "homepage": "https://github.com/dotch/x-tabbar",
+  "homepage": "https://github.com/mozbrick/brick-tabbar",
   "devDependencies": {
     "chai": "^1.9.1",
     "gulp": "^3.7.0",

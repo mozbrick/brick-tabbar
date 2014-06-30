@@ -1,4 +1,4 @@
-x-tabbar {
+brick-tabbar {
   display: block;
   display: -webkit-box;
   display: -moz-box;
@@ -10,7 +10,7 @@ x-tabbar {
   white-space: nowrap;
   text-align: center;
 }
-x-tabbar > x-tabbar-tab {
+brick-tabbar > brick-tabbar-tab {
   min-width: auto;
   min-height: auto;
   -webkit-box-flex: 1;
@@ -27,7 +27,7 @@ x-tabbar > x-tabbar-tab {
   min-height: auto;
   vertical-align: middle;
 }
-x-tabbar > x-tabbar-tab > *:only-child {
+brick-tabbar > brick-tabbar-tab > *:only-child {
   vertical-align: top;
   height: 100%;
   width: 100%;

@@ -1,8 +1,8 @@
 {
-  "bitwise": true,
   "browser": true,
   "camelcase": true,
   "curly": true,
+  "devel": false,
   "eqeqeq": true,
   "esnext": true,
   "immed": true,
@@ -10,11 +10,9 @@
   "latedef": true,
   "newcap": true,
   "noarg": true,
-  "node": true,
   "regexp": true,
-  "smarttabs": true,
   "trailing": true,
   "undef": true,
-  "unused": true,
-  "white": true
+  "unused": true
 }
+
