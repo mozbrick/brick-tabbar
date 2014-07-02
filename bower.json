@@ -1,6 +1,6 @@
 {
   "name": "brick-tabbar",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "homepage": "https://github.com/mozbrick/brick-tabbar",
   "authors": [
     "mozilla"
@@ -24,6 +24,6 @@
     "platform": "Polymer/platform"
   },
   "devDependencies": {
-    "brick-deck": "dotch/brick-deck"
+    "brick-deck": "mozbrick/brick-deck"
   }
 }

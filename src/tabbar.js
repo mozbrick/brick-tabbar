@@ -28,33 +28,24 @@
 
   BrickTabbarElementPrototype.attachedCallback = function () {
     var self = this;
-    self.settings = {};
-    self.settings.overallEventToFire = this.getAttribute("target-event") || "reveal";
     self.selectHandler = delegate("brick-tabbar-tab", function(){ _selectTab(this); });
     delegate(self,"select","brick-tabbar-tab", self.selectHandler);
     delegate(self,"click","brick-tabbar-tab", self.selectHandler);
   };
 
-  BrickTabbarElementPrototype.attributeChangedCallback = function (attr, oldVal, newVal) {
-    if (attr in attrs) {
-      attrs[attr].call(this, oldVal, newVal);
-    }
-  };
-
-  var attrs = {
-    'target-event': function (oldVal, newVal) {
-      this.settings.overallEventToFire = newVal;
-    }
-  };
-
   Object.defineProperties(BrickTabbarElementPrototype, {
     'targetEvent': {
-      get : function () {
-        return this.settings.overallEventToFire;
+      get: function () {
+        return this.getAttribute("target-event") || "reveal";
       },
-      set : function (newVal) {
-        this.settings.overallEventToFire = newVal;
+      set: function (newVal) {
         this.setAttribute('target-event', newVal);
+      }
+    },
+    'tabs': {
+      get: function() {
+        var tabList = this.querySelectorAll("brick-tabbar-tab");
+        return Array.prototype.slice.call(tabList);
       }
     }
   });

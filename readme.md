@@ -26,23 +26,46 @@
     <brick-tabbar></brick-tabbar>
     ```
 
-## Options
+## brick-tabbar 
+
+### Attributes
 
 Attribute     | Options     | Default      | Description
 ---           | ---         | ---          | ---
-`foo`         | *string*    | `bar`        | An Attribute.
+`target-event`| *string*    | `reveal`     | The event that a tab fires on its target element when the tab is clicked.
 
-## Methods
+### Accessors
+
+Property            | Type        | Default      | Description
+---                 | ---         | ---          | ---
+`target-event`      | *string*    | `reveal`     | Corresponds to the `target-event` attribute.
+`tabs` (getter only)| *array*     | -            | Returns a list of the `<brick-tabbar-tab>` elements in the `<brick-tabbar>`.  
+
+## brick-tabbar-tab
+
+### Attributes
+
+Attribute     | Options     | Default      | Description
+---           | ---         | ---          | ---
+`target-event`| *string*    | -            | The event that a tab fires on its target element when the tab is clicked. If not specified a tab takes the event specified on the parent brick-tabbar.
+
+### Accessors
+
+Property      | Type        | Default      | Description
+---           | ---         | ---          | ---
+`target-event`      | *string*    | `reveal`     | Corresponds to the `target-event` attribute.
+
+### Methods
 
 Method        | Parameters   | Returns     | Description
 ---           | ---          | ---         | ---
-`method()`    | None.        | Nothing.    | A method.
+`select()`    | -            | -           | Select the tab.
 
-## Events
+### Events
 
 Event         | Description
 ---           | ---
-`onsomething` | Triggers when something happens.
+`reveal`      | Whenever a brick-tabbar-tab is clicked, and `target-event` is not otherwise specified, a `reveal` event is fired on each of its target elements. It is up to the target element to respond to this event. Some Brick Elements have default responses to the `reveal`.
 
 ## Development
 
