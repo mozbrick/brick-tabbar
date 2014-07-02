@@ -48,12 +48,15 @@ Property            | Type        | Default      | Description
 Attribute     | Options     | Default      | Description
 ---           | ---         | ---          | ---
 `target-event`| *string*    | -            | The event that a tab fires on its target element when the tab is clicked. If not specified a tab takes the event specified on the parent brick-tabbar.
+`target`      | *string*    | -            | The id of the target element of this particular tab.
 
 ### Accessors
 
-Property      | Type        | Default      | Description
----           | ---         | ---          | ---
-`target-event`      | *string*    | `reveal`     | Corresponds to the `target-event` attribute.
+Property       | Type        | Default      | Description
+---            | ---         | ---          | ---
+`target-event` | *string*    | `reveal`     | Corresponds to the `target-event` attribute.
+`target`       | *string*    | -            | Corresponds to the `target` attrubute.
+`targetElement`| *node*      |              | getter: Returns the element targeted by the specific tab. setter: Assigns the tab's targeted element. (If target is assigned using this dynamic assignment, the target-selector attribute is removed.)
 
 ### Methods
 
@@ -66,6 +69,7 @@ Method        | Parameters   | Returns     | Description
 Event         | Description
 ---           | ---
 `reveal`      | Whenever a brick-tabbar-tab is clicked, and `target-event` is not otherwise specified, a `reveal` event is fired on each of its target elements. It is up to the target element to respond to this event. Some Brick Elements have default responses to the `reveal`.
+`select`      | The select event is fired when the tab is explicitly selected, using its `select` method.
 
 ## Development
 
