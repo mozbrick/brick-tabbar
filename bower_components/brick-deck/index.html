@@ -114,7 +114,7 @@
 
     <div id="demo-controls">
       <button onclick="getDemoBox().previousCard('reverse')"><-- Shuffle Prev</button>
-    <button onclick="getDemoBox().showCard(0)">Select Card at Index 0</button>
+      <button onclick="getDemoBox().showCard(0)">Select Card at Index 0</button>
       <button onclick="getDemoBox().nextCard()">Shuffle Next --></button>
       <br/>
       <button onclick="nextType()">change transition type</button>
@@ -136,7 +136,7 @@
       <button onclick="getDemoBox().showCard(1)">shuffleTo 1 (default)</button>
       <button onclick="getDemoBox().showCard(2)">shuffleTo 2 (auto)</button>
       <button onclick="getDemoBox().showCard(3, 'forward')">shuffleTo 3 (always forwards)</button>
-      <button onclick="getDemoBox().showCard(4, 'reverse')">shuffleTo 4 (always reverse)</button>
+      <button onclick="getDemoBox().showCard(4, {direction:'reverse'})">shuffleTo 4 (always reverse)</button>
       <button onclick="triggerShow(1)">Trigger reveal event on 1</button>
       <button onclick="callShow(2)">Call .showCard() on 2</button>
       <button onclick="editSelectedIndex(3)">Set selected-index to 3</button>

@@ -49,7 +49,6 @@
         <li><code>slide-right</li>
         <li><code>slide-up</code></li>
         <li><code>slide-down</code></li>
-        <li><code>fade-scale</code></li>
       </ul>
     </td>
     <td>-</td>
@@ -99,7 +98,7 @@ Poperty               | Type      | Description
 
 Method                                    | Returns     | Description
 ---                                       | ---         | ---
-`showCard(index / element, [direction])`  | -           | Transitions to the x-card at the given index within the deck. If given a direction of 'forward', will perform the forwards/normal version of the current transition animation. If given 'reverse', will performs the reverse animation. If the direction is omitted, the deck will perform a forward animation.
+`showCard(index / element, [direction])`  | -           | Transitions to the brick-card at the given index within the deck. If given a direction of 'forward', will perform the forwards/normal version of the current transition animation. If given 'reverse', will performs the reverse animation. If the direction is omitted, the deck will perform a forward animation.
 `hideCard(index / element)`               | -           | Hides the card element or card located at a specified index.
 `nextCard([direction])`                   | -           | Transitions to the next card in the deck, looping back to the start if needed.
 `previousCard([direction])`               | -           | Transitions to the previous card in the deck, looping back to the end if needed.
