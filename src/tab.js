@@ -1,16 +1,10 @@
-// TODO? also accept TargetElems
-
 (function () {
 
   function _onTapbarTabClick (tabEl) {
     if (tabEl.parentNode.nodeName.toLowerCase() === "brick-tabbar") {
-      var targetEvent = tabEl.targetEvent; // getter handles casing
-      var targets = (tabEl.targetSelector) ?
-                    document.querySelectorAll(tabEl.targetSelector) :
-                    tabEl.targetElems;
-      for (var i = 0; i < targets.length; i++) {
-        targets[i].dispatchEvent(new CustomEvent(targetEvent, {'bubbles': true}));
-      }
+      var targetEvent = tabEl.targetEvent;
+      var target = tabEl.targetElement;
+      target.dispatchEvent(new CustomEvent(targetEvent, {'bubbles': true}));
     }
   }
 
@@ -18,11 +12,11 @@
 
   BrickTabbarTabElementPrototype.attachedCallback = function () {
     var self = this;
-    self.addEventListener("select", function(e){
+    self.addEventListener("click", function(e){
       var tabEl = e.currentTarget;
       _onTapbarTabClick(tabEl);
     });
-    self.addEventListener("click", function(e){
+    self.addEventListener("select", function(e){
       var tabEl = e.currentTarget;
       _onTapbarTabClick(tabEl);
     });
@@ -33,16 +27,16 @@
   };
 
   Object.defineProperties(BrickTabbarTabElementPrototype, {
-    'targetSelector': {
-      get : function () {
-        return this.getAttribute("target-selector");
+    'target': {
+      get: function () {
+        return this.getAttribute("target");
       },
-      set : function (newVal) {
-        this.setAttribute('target-selector', newVal);
+      set: function (newVal) {
+        this.setAttribute('target', newVal);
       }
     },
     'targetEvent': {
-      get : function () {
+      get: function () {
         if (this.hasAttribute("target-event")) {
           return this.getAttribute("target-event");
         } else if (this.parentNode.nodeName.toLowerCase() === "brick-tabbar") {
@@ -51,8 +45,21 @@
           throw "tabbar-tab is missing event to fire";
         }
       },
-      set : function (newVal) {
+      set: function (newVal) {
         this.setAttribute('target-event', newVal);
+      }
+    },
+    'targetElement': {
+      get: function() {
+        if (this.overrideElement) {
+          return this.overrideElement;
+        } else {
+          return document.getElementById(this.target);
+        }
+      },
+      set: function(newVal) {
+        this.overrideElement = newVal;
+        this.removeAttribute("target");
       }
     }
   });
