@@ -1,0 +1,53 @@
+$color-alpha = #333333;
+$color-beta = #ffffff;
+$color-gamma = #4d4d4d;
+$color-delta = #5f5f5f;
+$color-epsilon = #858585;
+$color-zeta = #a6a6a6;
+$color-eta = #c7c7c7;
+$color-theta = #e7e7e7;
+$color-iota = #f4f4f4;
+$button-transition = all 0s;
+$button-transition-delay = 300ms;
+
+brick-tabbar {
+
+  border-top: 1px solid grey;
+  background: $color-beta;
+
+  brick-tabbar-tab {
+
+    height: 45px;
+    line-height: 45px;
+    cursor: pointer;
+    position: relative;
+    font-style: italic;
+    color: $color-epsilon;
+
+    &:active {
+      transition: none;
+      opacity: 0.3;
+    }
+
+    &[selected]:active {
+      background: transparent;
+    }
+
+    &:after {
+      content: " ";
+      width: 100%;
+      position: absolute;
+      bottom: 0px;
+      left: 0px;
+      height: 3px;
+      background: $color-alpha;
+      transition: all .2s;
+      transform: scaleX(0);
+    }
+
+    &[selected]:after {
+      transform: scaleX(1);
+    }
+
+  }
+}
