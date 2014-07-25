@@ -8,11 +8,10 @@ $color-eta = #c7c7c7;
 $color-theta = #e7e7e7;
 $color-iota = #f4f4f4;
 
+// works without polyfill
 :host {
-
   border-top: 1px solid grey;
   background: $color-beta;
-
   .selected-indicator {
     position: absolute;
     bottom: 0px;
@@ -24,40 +23,53 @@ $color-iota = #f4f4f4;
     transition: all 0.2s ease-in-out;
     transform: translateX(0);
   }
+}
+::content brick-tabbar-tab {
+  height: 45px;
+  line-height: 45px;
+  cursor: pointer;
+  position: relative;
+  font-style: italic;
+  color: $color-epsilon;
 
-  ::content brick-tabbar-tab {
+  &:active {
+    transition: none;
+    opacity: 0.3;
+  }
+  &[selected]:active {
+    background: transparent;
+  }
+}
 
-    height: 45px;
-    line-height: 45px;
-    cursor: pointer;
-    position: relative;
-    font-style: italic;
-    color: $color-epsilon;
+// works with polyfill
+brick-tabbar {
+  border-top: 1px solid grey;
+  background: $color-beta;
+  .selected-indicator {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 0px;
+    height: 3px;
+    background: green;
+    width: 100px;
+    transition: all 0.2s ease-in-out;
+    transform: translateX(0);
+  }
+}
+brick-tabbar-tab {
+  height: 45px;
+  line-height: 45px;
+  cursor: pointer;
+  position: relative;
+  font-style: italic;
+  color: $color-epsilon;
 
-    &:active {
-      transition: none;
-      opacity: 0.3;
-    }
-
-    &[selected]:active {
-      background: transparent;
-    }
-
-    // &:after {
-    //   content: " ";
-    //   width: 100%;
-    //   position: absolute;
-    //   bottom: 0px;
-    //   left: 0px;
-    //   height: 3px;
-    //   background: $color-alpha;
-    //   transition: all .2s;
-    //   transform: scaleX(0);
-    // }
-
-    // &[selected]:after {
-    //   transform: scaleX(1);
-    // }
-
+  &:active {
+    transition: none;
+    opacity: 0.3;
+  }
+  &[selected]:active {
+    background: transparent;
   }
 }

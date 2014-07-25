@@ -35,6 +35,28 @@
 
   var BrickTabbarElementPrototype = Object.create(HTMLElement.prototype);
 
+  BrickTabbarElementPrototype.createdCallback = function () {
+    var self = this;
+    var importDoc = currentScript.ownerDocument;
+
+    var template = importDoc.querySelector("#brick-tabbar-template");
+    var shadowRoot = self.createShadowRoot();
+
+    // shadowRoot.appendChild(document.importNode(template.content, true));
+    shadowRoot.appendChild(template.content.cloneNode(true));
+
+    self.selectedIndicator = shadowRoot.querySelector(".selected-indicator");
+    self.selectedIndicator.style.width = 100 / self.tabs.length + "%";
+
+    self.selectHandler = delegate("brick-tabbar-tab", function(){
+      _selectTab(this);
+    });
+
+    self.addEventListener("click", self.selectHandler);
+    self.addEventListener("select", self.selectHandler);
+
+  };
+
   BrickTabbarElementPrototype.attachedCallback = function () {
     var self = this;
     var importDoc = currentScript.ownerDocument;
