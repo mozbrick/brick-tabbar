@@ -1,4 +1,26 @@
-<link rel="stylesheet" href="brick-tabbar.css">
-<link rel="stylesheet" href="themes/default.css">
 <script src="tab.js"></script>
 <script src="tabbar.js"></script>
+
+
+<!--
+  multiple problems:
+    -the css import path is relative to the importing html file.
+      -> same behavior without polyfill.
+    -the styles get only applied in chrome
+     -> possible polyfill problem.
+ -->
+<template id="brick-tabbar-template">
+
+  <!-- style tags import itself  -->
+  <style>
+    @import "src/brick-tabbar.css";
+    @import "src/themes/default.css";
+  </style>
+
+  <!-- style links to not import itself -->
+<!--   <link rel="stylesheet" href="src/brick-tabbar.css">
+  <link rel="stylesheet" href="src/themes/default.css">
+ -->
+  <div class="selected-indicator"></div>
+  <content></content>
+</template>

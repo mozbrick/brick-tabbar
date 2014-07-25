@@ -1,8 +1,19 @@
-brick-tabbar {
+:host {
   border-top: 1px solid #808080;
   background: #fff;
 }
-brick-tabbar brick-tabbar-tab {
+:host .selected-indicator {
+  position: absolute;
+  bottom: 0px;
+  left: 0px;
+  width: 0px;
+  height: 3px;
+  background: #008000;
+  width: 100px;
+  transition: all 0.2s ease-in-out;
+  transform: translateX(0);
+}
+:host ::content brick-tabbar-tab {
   height: 45px;
   line-height: 45px;
   cursor: pointer;
@@ -10,24 +21,10 @@ brick-tabbar brick-tabbar-tab {
   font-style: italic;
   color: #858585;
 }
-brick-tabbar brick-tabbar-tab:active {
+:host ::content brick-tabbar-tab:active {
   transition: none;
   opacity: 0.3;
 }
-brick-tabbar brick-tabbar-tab[selected]:active {
+:host ::content brick-tabbar-tab[selected]:active {
   background: transparent;
-}
-brick-tabbar brick-tabbar-tab:after {
-  content: " ";
-  width: 100%;
-  position: absolute;
-  bottom: 0px;
-  left: 0px;
-  height: 3px;
-  background: #333;
-  transition: all 0.2s;
-  transform: scaleX(0);
-}
-brick-tabbar brick-tabbar-tab[selected]:after {
-  transform: scaleX(1);
 }
