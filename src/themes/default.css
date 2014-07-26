@@ -1,5 +1,5 @@
 :host {
-  border-top: 1px solid #808080;
+  border-top: 1px solid #f4f4f4;
   background: #fff;
 }
 :host .selected-indicator {
@@ -8,9 +8,9 @@
   left: 0px;
   width: 0px;
   height: 3px;
-  background: #008000;
+  background: #000;
   width: 100px;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease;
   transform: translateX(0);
 }
 ::content brick-tabbar-tab {
@@ -26,35 +26,5 @@
   opacity: 0.3;
 }
 ::content brick-tabbar-tab[selected]:active {
-  background: transparent;
-}
-brick-tabbar {
-  border-top: 1px solid #808080;
-  background: #fff;
-}
-brick-tabbar .selected-indicator {
-  position: absolute;
-  bottom: 0px;
-  left: 0px;
-  width: 0px;
-  height: 3px;
-  background: #008000;
-  width: 100px;
-  transition: all 0.2s ease-in-out;
-  transform: translateX(0);
-}
-brick-tabbar-tab {
-  height: 45px;
-  line-height: 45px;
-  cursor: pointer;
-  position: relative;
-  font-style: italic;
-  color: #858585;
-}
-brick-tabbar-tab:active {
-  transition: none;
-  opacity: 0.3;
-}
-brick-tabbar-tab[selected]:active {
   background: transparent;
 }

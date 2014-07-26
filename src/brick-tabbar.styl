@@ -1,7 +1,6 @@
 @import '../bower_components/brick-common/styles/mixins'
 @import '../bower_components/brick-common/styles/params'
 
-// works without polyfill
 :host {
   width: 100%;
   overflow: hidden;
@@ -27,31 +26,3 @@
     margin: 0 !important;
   }
 }
-
-// works with polyfill
-brick-tabbar {
-  width: 100%;
-  overflow: hidden;
-  white-space: nowrap;
-  margin: 0;
-  padding: 0;
-  flexbox();
-  position: relative;
-}
-brick-tabbar-tab {
-  flex(1);
-  box-sizing(border-box);
-  display: inline-block;
-  min-width: auto;
-  min-height: auto;
-  vertical-align: middle;
-  cursor: pointer
-  text-align: center;
-  & > *:only-child{
-    vertical-align: top;
-    height: 100%;
-    width: 100%;
-    margin: 0 !important;
-  }
-}
-
