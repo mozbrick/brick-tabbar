@@ -1,3 +1,78 @@
-<link rel="stylesheet" href="brick-tabbar.css">
+<template id="brick-tabbar-template">
+  <style>
+    :host {
+      width: 100%;
+      overflow: hidden;
+      white-space: nowrap;
+      margin: 0;
+      padding: 0;
+      display: -webkit-box;
+      display: -moz-box;
+      display: -ms-flexbox;
+      display: -webkit-flex;
+      display: flex;
+      position: relative;
+    }
+    ::content brick-tabbar-tab {
+      min-width: auto;
+      min-height: auto;
+      -webkit-box-flex: 1;
+      -moz-box-flex: 1;
+      -webkit-flex: 1;
+      -ms-flex: 1;
+      box-flex: 1;
+      flex: 1;
+      -webkit-box-sizing: border-box;
+      -moz-box-sizing: border-box;
+      box-sizing: border-box;
+      display: inline-block;
+      min-width: auto;
+      min-height: auto;
+      vertical-align: middle;
+      cursor: pointer;
+      text-align: center;
+    }
+    ::content brick-tabbar-tab > *:only-child {
+      vertical-align: top;
+      height: 100%;
+      width: 100%;
+      margin: 0 !important;
+    }
+
+    :host {
+      border-top: 1px solid #f4f4f4;
+      background: #fff;
+    }
+    :host .selected-indicator {
+      position: absolute;
+      bottom: 0px;
+      left: 0px;
+      width: 0px;
+      height: 3px;
+      background: #000;
+      width: 100px;
+      transition: all 0.2s ease;
+      transform: translateX(0);
+    }
+    ::content brick-tabbar-tab {
+      height: 45px;
+      line-height: 45px;
+      cursor: pointer;
+      position: relative;
+      font-style: italic;
+      color: #858585;
+    }
+    ::content brick-tabbar-tab:active {
+      transition: none;
+      opacity: 0.3;
+    }
+    ::content brick-tabbar-tab[selected]:active {
+      background: transparent;
+    }
+  </style>
+  <div class="selected-indicator"></div>
+  <content></content>
+</template>
+
 <script src="tab.js"></script>
 <script src="tabbar.js"></script>

@@ -1,16 +1,17 @@
-brick-tabbar {
-  display: block;
+:host {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  margin: 0;
+  padding: 0;
   display: -webkit-box;
   display: -moz-box;
   display: -ms-flexbox;
   display: -webkit-flex;
   display: flex;
-  width: 100%;
-  overflow: hidden;
-  white-space: nowrap;
-  text-align: center;
+  position: relative;
 }
-brick-tabbar > brick-tabbar-tab {
+::content brick-tabbar-tab {
   min-width: auto;
   min-height: auto;
   -webkit-box-flex: 1;
@@ -26,8 +27,10 @@ brick-tabbar > brick-tabbar-tab {
   min-width: auto;
   min-height: auto;
   vertical-align: middle;
+  cursor: pointer;
+  text-align: center;
 }
-brick-tabbar > brick-tabbar-tab > *:only-child {
+::content brick-tabbar-tab > *:only-child {
   vertical-align: top;
   height: 100%;
   width: 100%;

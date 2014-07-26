@@ -1,25 +1,28 @@
 @import '../bower_components/brick-common/styles/mixins'
 @import '../bower_components/brick-common/styles/params'
 
-brick-tabbar{
-  display: block;
-  flexbox();
+:host {
   width: 100%;
   overflow: hidden;
   white-space: nowrap;
+  margin: 0;
+  padding: 0;
+  flexbox();
+  position: relative;
+}
+::content brick-tabbar-tab {
+  flex(1);
+  box-sizing(border-box);
+  display: inline-block;
+  min-width: auto;
+  min-height: auto;
+  vertical-align: middle;
+  cursor: pointer
   text-align: center;
-  & > brick-tabbar-tab{
-    flex(1);
-    box-sizing(border-box);
-    display: inline-block;
-    min-width:auto;
-    min-height:auto;
-    vertical-align: middle;
-    & > *:only-child{
-      vertical-align: top;
-      height: 100%;
-      width: 100%;
-      margin: 0 !important;
-    }
+  & > *:only-child{
+    vertical-align: top;
+    height: 100%;
+    width: 100%;
+    margin: 0 !important;
   }
 }
