@@ -1,51 +1,46 @@
-$color-alpha = #333333;
-$color-beta = #ffffff;
-$color-gamma = #4d4d4d;
-$color-delta = #5f5f5f;
+$color-alpha = #333;
+$color-beta = #FFF;
+$color-gamma = #4D4D4D;
+$color-delta = #5F5F5F;
 $color-epsilon = #858585;
-$color-zeta = #a6a6a6;
-$color-eta = #c7c7c7;
-$color-theta = #e7e7e7;
-$color-iota = #f4f4f4;
+$color-zeta = #A6A6A6;
+$color-eta = #C7C7C7;
+$color-theta = #E7E7E7;
+$color-iota = #F4F4F4;
+$button-transition = all 0s;
+$button-transition-delay = 300ms;
+$dim-micro = 6px;
+$dim-small = 14px;
+$dim-mega = 60px;
+$highlight-color = #000;
 
-brick-tabbar {
-
-  border-top: 1px solid grey;
+:host {
+  border-top: 1px solid $color-iota;
   background: $color-beta;
-
-  brick-tabbar-tab {
-
-    height: 45px;
-    line-height: 45px;
-    cursor: pointer;
-    position: relative;
-    font-style: italic;
-    color: $color-epsilon;
-
-    &:active {
-      transition: none;
-      opacity: 0.3;
-    }
-
-    &[selected]:active {
-      background: transparent;
-    }
-
-    &:after {
-      content: " ";
-      width: 100%;
-      position: absolute;
-      bottom: 0px;
-      left: 0px;
-      height: 3px;
-      background: $color-alpha;
-      transition: all .2s;
-      transform: scaleX(0);
-    }
-
-    &[selected]:after {
-      transform: scaleX(1);
-    }
-
+  .selected-indicator {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    width: 0px;
+    height: 3px;
+    background: $highlight-color;
+    width: 100px;
+    transition: all 0.2s ease;
+    transform: translateX(0);
+  }
+}
+::content brick-tabbar-tab {
+  height: 45px;
+  line-height: 45px;
+  cursor: pointer;
+  position: relative;
+  font-style: italic;
+  color: $color-epsilon;
+  &:active {
+    transition: none;
+    opacity: 0.3;
+  }
+  &[selected]:active {
+    background: transparent;
   }
 }

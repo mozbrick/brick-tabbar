@@ -1,4 +1,8 @@
+/* global Platform */
+
 (function () {
+
+  var currentScript = document._currentScript || document.currentScript;
 
   function delegate(selector, handler) {
     return function(e) {
@@ -17,39 +21,66 @@
   }
 
   function _selectTab(tabEl) {
-    var activeTab = tabEl.parentNode.querySelectorAll('brick-tabbar-tab[selected]');
+    var tabbar = tabEl.parentNode;
+    var activeTab = tabbar.querySelectorAll('brick-tabbar-tab[selected]');
     for (var i = 0; i < activeTab.length; i++) {
       activeTab[i].removeAttribute('selected');
     }
     tabEl.setAttribute('selected', true);
+
+    // move the indicator
+    var index = tabbar.tabs.indexOf(tabEl);
+    var indicator = tabbar.selectedIndicator;
+    indicator.style.transform = 'translateX(' + 100 * index + '%)';
   }
 
   var BrickTabbarElementPrototype = Object.create(HTMLElement.prototype);
 
-  BrickTabbarElementPrototype.attachedCallback = function () {
-    var self = this;
-    self.selectHandler = delegate("brick-tabbar-tab", function(){ _selectTab(this); });
-    self.addEventListener("click", self.selectHandler);
-    self.addEventListener("select", self.selectHandler);
+  BrickTabbarElementPrototype.createdCallback = function() {
+
+    var importDoc = currentScript.ownerDocument;
+    var template = importDoc.querySelector('#brick-tabbar-template');
+
+    // fix styling for polyfill
+    if (Platform.ShadowCSS) {
+      var style = template.content.querySelector('style');
+      var cssText = Platform.ShadowCSS.shimStyle(style, 'brick-tabbar');
+      Platform.ShadowCSS.addCssToDocument(cssText);
+      style.remove();
+    }
+
+    // create shadowRoot and append template to it.
+    var shadowRoot = this.createShadowRoot();
+    shadowRoot.appendChild(template.content.cloneNode(true));
+
+    this.selectedIndicator = shadowRoot.querySelector('.selected-indicator');
+    this.selectedIndicator.style.width = 100 / this.tabs.length + '%';
+
+    this.selectHandler = delegate('brick-tabbar-tab', function(){
+      _selectTab(this);
+    });
+
+    this.addEventListener('click', this.selectHandler);
+    this.addEventListener('select', this.selectHandler);
   };
 
-  BrickTabbarElementPrototype.detachedCallback = function () {
-    this.removeEventListener("click", this.selectHandler);
-    this.removeEventListener("select", this.selectHandler);
+  BrickTabbarElementPrototype.detachedCallback = function() {
+    this.removeEventListener('click', this.selectHandler);
+    this.removeEventListener('select', this.selectHandler);
   };
 
   Object.defineProperties(BrickTabbarElementPrototype, {
     'targetEvent': {
-      get: function () {
-        return this.getAttribute("target-event") || "reveal";
+      get: function() {
+        return this.getAttribute('target-event') || 'reveal';
       },
-      set: function (newVal) {
+      set: function(newVal) {
         this.setAttribute('target-event', newVal);
       }
     },
     'tabs': {
       get: function() {
-        var tabList = this.querySelectorAll("brick-tabbar-tab");
+        var tabList = this.querySelectorAll('brick-tabbar-tab');
         return Array.prototype.slice.call(tabList);
       }
     }
