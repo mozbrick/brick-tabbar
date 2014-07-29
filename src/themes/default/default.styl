@@ -1,5 +1,18 @@
-@import '../bower_components/brick-common/styles/mixins'
-@import '../bower_components/brick-common/styles/params'
+$color-alpha = #333;
+$color-beta = #FFF;
+$color-gamma = #4D4D4D;
+$color-delta = #5F5F5F;
+$color-epsilon = #858585;
+$color-zeta = #A6A6A6;
+$color-eta = #C7C7C7;
+$color-theta = #E7E7E7;
+$color-iota = #F4F4F4;
+$button-transition = all 0s;
+$button-transition-delay = 300ms;
+$dim-micro = 6px;
+$dim-small = 14px;
+$dim-mega = 60px;
+$highlight-color = #000;
 
 $xs = {                end:  768px, name: xs }
 $s  = { start:  768px, end:  992px, name: s  }
@@ -50,31 +63,41 @@ responsifyHost(selector, attr, content) {
 }
 
 :host {
-  width: 100%;
-  overflow: hidden;
-  white-space: nowrap;
-  margin: 0;
-  padding: 0;
-  flexbox();
-  position: relative;
-
-  // vertical tabbar
+  border-top: 1px solid $color-iota;
+  background: $color-beta;
+  .selected-indicator {
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    height: 3px;
+    background: $highlight-color;
+    transition: all 0.2s ease;
+    transform: translateX(0);
+  }
   _vertical() {
-    flex-direction: column;
+    .selected-indicator {
+      top: 0px;
+      left: 0px;
+      width: 3px ;
+      transform: translateX(0);
+    }
   }
   responsifyHost("&", vertical, _vertical);
 }
 
 ::content brick-tabbar-tab {
-  flex(1);
-  box-sizing(border-box);
-  display: inline-block;
-  cursor: pointer
-  text-align: center;
-  & > *:only-child{
-    vertical-align: top;
-    height: 100%;
-    width: 100%;
-    margin: 0 !important;
+  height: 45px;
+  line-height: 45px;
+  cursor: pointer;
+  position: relative;
+  font-style: italic;
+  color: $color-epsilon;
+  &:active {
+    transition: none;
+    opacity: 0.3;
+  }
+  &[selected]:active {
+    background: transparent;
   }
 }
+
