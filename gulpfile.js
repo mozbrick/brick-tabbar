@@ -9,8 +9,10 @@ var gulp = require('gulp');
 var helptext = require('gulp-helptext');
 var jshint = require('gulp-jshint');
 var rm = require('gulp-rm');
+var rename = require('gulp-rename');
 var stylus = require('gulp-stylus');
 var vulcanize = require('gulp-vulcanize');
+var bowerDist = require('gulp-bower-dist');
 
 var paths = {
   'main': 'src/brick-tabbar.html',
@@ -41,7 +43,15 @@ gulp.task('themes', function() {
     .pipe(gulp.dest('src/themes'));
 });
 
-gulp.task('clean', ['vulcanize'], function() {
+gulp.task('rename', ['vulcanize'], function() {
+  return gulp.src('dist/brick-tabbar.html')
+    .pipe(rename(function(path){
+      path.basename += '.local';
+    }))
+    .pipe(gulp.dest('dist'));
+});
+
+gulp.task('clean', ['vulcanize', 'rename'], function() {
   gulp.src(['src/*.css', 'src/themes/**/*.css'])
     .pipe(rm());
 });
@@ -61,8 +71,17 @@ gulp.task('vulcanize', ['styles','themes'], function() {
     .pipe(gulp.dest('dist'));
 });
 
+gulp.task('dist', ['vulcanize'], function () {
+  return gulp.src('dist/*.local.html')
+    .pipe(bowerDist())
+    .pipe(rename(function(path) {
+      path.basename = path.basename.replace('.local', '');
+    }))
+    .pipe(gulp.dest('dist'));
+});
+
 // build scripts and styles
-gulp.task('build', ['lint','styles','themes','vulcanize', 'clean']);
+gulp.task('build', ['lint','styles','themes','vulcanize', 'rename','dist','clean']);
 
 gulp.task('connect', function() {
   connect.server({
@@ -82,7 +101,6 @@ gulp.task('server', ['build','connect','watch']);
 
 // Bump up the Version (patch)
 gulp.task('bump', function(){
-  console.log(arguments);
   gulp.src(['bower.json','package.json'])
   .pipe(bump())
   .pipe(gulp.dest('./'));
