@@ -52,7 +52,7 @@ gulp.task('rename', ['vulcanize'], function() {
 });
 
 gulp.task('clean', ['vulcanize', 'rename'], function() {
-  gulp.src(['src/*.css', 'src/themes/**/*.css', 'dist/brick-tabbar.html',])
+  gulp.src(['src/*.css', 'src/themes/**/*.css'])
     .pipe(rm());
 });
 
