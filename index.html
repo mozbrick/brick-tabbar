@@ -11,9 +11,6 @@
     <!-- Importing Custom Elemenent -->
     <link rel="import" href="dist/brick-tabbar.local.html">
 
-    <!-- Importing brick-deck, just for the demo -->
-    <link rel="import" href="bower_components/brick-deck/src/brick-deck.html">
-
     <style type="text/css">
       html, body{
         width: 100%;
@@ -41,25 +38,32 @@
     </style>
   </head>
   <body>
-    <brick-deck class="demo-box" selected-index="0">
-      <brick-card id="a" selected>0</brick-card>
-      <brick-card id="b">1</brick-card>
-      <brick-card id="c">2</brick-card>
-    </brick-deck>
     <!-- Using Custom Element -->
     <brick-tabbar id="demo-bar">
-      <brick-tabbar-tab target="a" selected><i class="fa fa-camera-retro"></i></brick-tabbar-tab>
-      <brick-tabbar-tab target="b"><i class="fa fa-envelope"></i></brick-tabbar-tab>
-      <brick-tabbar-tab target="c"><i class="fa fa-home"></i></brick-tabbar-tab>
+      <brick-tabbar-tab target="a" selected>
+        <i class="fa fa-camera-retro"></i>
+      </brick-tabbar-tab>
+      <brick-tabbar-tab target="b">
+        <i class="fa fa-envelope"></i>
+      </brick-tabbar-tab>
+      <brick-tabbar-tab target="c">
+        <i class="fa fa-home"></i>
+      </brick-tabbar-tab>
     </brick-tabbar>
 
     <hr>
     <br>
 
     <brick-tabbar id="demo-bar" vertical>
-      <brick-tabbar-tab target="a" selected><i class="fa fa-camera-retro"></i></brick-tabbar-tab>
-      <brick-tabbar-tab target="b"><i class="fa fa-envelope"></i></brick-tabbar-tab>
-      <brick-tabbar-tab target="c"><i class="fa fa-home"></i></brick-tabbar-tab>
+      <brick-tabbar-tab target="a" selected>
+        <i class="fa fa-camera-retro"></i> Fotos
+      </brick-tabbar-tab>
+      <brick-tabbar-tab target="b">
+        <i class="fa fa-envelope"></i> Messages
+      </brick-tabbar-tab>
+      <brick-tabbar-tab target="c">
+        <i class="fa fa-home"></i> Home
+      </brick-tabbar-tab>
     </brick-tabbar>
 
   </body>

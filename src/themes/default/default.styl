@@ -59,8 +59,17 @@ responsifyHost(selector, attr, content) {
     background: $highlight-color;
     transition: all 0.2s ease;
     transform: translateX(0);
+    z-index: 2; // overlay borders, etc
   }
   _vertical() {
+    border-top: none;
+    border-right: 1px solid $color-iota;
+    ::content brick-tabbar-tab {
+      border-bottom: 1px solid $color-iota;
+      &:last-of-type {
+        border: none;
+      }
+    }
     .selected-indicator {
       top: 0px;
       left: 0px;
@@ -78,7 +87,7 @@ responsifyHost(selector, attr, content) {
   position: relative;
   font-style: italic;
   color: $color-epsilon;
-  i {
+  .fa {
     font-size: 30px;
     line-height: 45px;
   }
