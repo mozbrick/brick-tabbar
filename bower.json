@@ -20,8 +20,8 @@
     "tests"
   ],
   "dependencies": {
-    "brick-common": "*",
-    "platform": "Polymer/platform"
+    "platform": "Polymer/platform",
+    "brick-common": "dotch/brick-common#master"
   },
   "devDependencies": {
     "brick-deck": "mozbrick/brick-deck"

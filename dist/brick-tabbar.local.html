@@ -1,3 +1,5 @@
+<link rel="import" href="../bower_components/brick-common/brick-common.html">
+
 <template id="brick-tabbar-template">
   <style>/**
  * notice the () around teh attribute. that is because of
@@ -192,6 +194,10 @@
   position: relative;
   font-style: italic;
   color: #858585;
+}
+::content brick-tabbar-tab i {
+  font-size: 30px;
+  line-height: 45px;
 }
 ::content brick-tabbar-tab:active {
   transition: none;

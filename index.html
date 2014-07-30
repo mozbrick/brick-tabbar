@@ -9,7 +9,7 @@
     <script src="bower_components/platform/platform.js"></script>
 
     <!-- Importing Custom Elemenent -->
-    <link rel="import" href="dist/brick-tabbar.html">
+    <link rel="import" href="dist/brick-tabbar.local.html">
 
     <!-- Importing brick-deck, just for the demo -->
     <link rel="import" href="bower_components/brick-deck/src/brick-deck.html">
@@ -24,7 +24,6 @@
         margin: 0 auto;
         width: 320px;
         height: 480px;
-        background-color: #333;
       }
       .demo-box brick-card{
         text-align:center;
@@ -49,18 +48,18 @@
     </brick-deck>
     <!-- Using Custom Element -->
     <brick-tabbar id="demo-bar">
-      <brick-tabbar-tab target="a" selected>0</brick-tabbar-tab>
-      <brick-tabbar-tab target="b">1</brick-tabbar-tab>
-      <brick-tabbar-tab target="c">2</brick-tabbar-tab>
+      <brick-tabbar-tab target="a" selected><i class="fa fa-camera-retro"></i></brick-tabbar-tab>
+      <brick-tabbar-tab target="b"><i class="fa fa-envelope"></i></brick-tabbar-tab>
+      <brick-tabbar-tab target="c"><i class="fa fa-home"></i></brick-tabbar-tab>
     </brick-tabbar>
 
     <hr>
     <br>
 
     <brick-tabbar id="demo-bar" vertical>
-      <brick-tabbar-tab target="a" selected>0</brick-tabbar-tab>
-      <brick-tabbar-tab target="b">1</brick-tabbar-tab>
-      <brick-tabbar-tab target="c">2</brick-tabbar-tab>
+      <brick-tabbar-tab target="a" selected><i class="fa fa-camera-retro"></i></brick-tabbar-tab>
+      <brick-tabbar-tab target="b"><i class="fa fa-envelope"></i></brick-tabbar-tab>
+      <brick-tabbar-tab target="c"><i class="fa fa-home"></i></brick-tabbar-tab>
     </brick-tabbar>
 
   </body>
