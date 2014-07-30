@@ -9,6 +9,7 @@ var gulp = require('gulp');
 var helptext = require('gulp-helptext');
 var jshint = require('gulp-jshint');
 var rm = require('gulp-rm');
+var rename = require('gulp-rename');
 var stylus = require('gulp-stylus');
 var vulcanize = require('gulp-vulcanize');
 
@@ -41,8 +42,16 @@ gulp.task('themes', function() {
     .pipe(gulp.dest('src/themes'));
 });
 
-gulp.task('clean', ['vulcanize'], function() {
-  gulp.src(['src/*.css', 'src/themes/**/*.css'])
+gulp.task('rename', ['vulcanize'], function() {
+  return gulp.src('dist/brick-tabbar.html')
+    .pipe(rename(function(path){
+      path.basename += '.local';
+    }))
+    .pipe(gulp.dest('dist'));
+});
+
+gulp.task('clean', ['vulcanize', 'rename'], function() {
+  gulp.src(['src/*.css', 'src/themes/**/*.css', 'dist/brick-tabbar.html',])
     .pipe(rm());
 });
 
@@ -62,7 +71,7 @@ gulp.task('vulcanize', ['styles','themes'], function() {
 });
 
 // build scripts and styles
-gulp.task('build', ['lint','styles','themes','vulcanize', 'clean']);
+gulp.task('build', ['lint','styles','themes','vulcanize', 'rename', 'clean']);
 
 gulp.task('connect', function() {
   connect.server({
@@ -82,7 +91,6 @@ gulp.task('server', ['build','connect','watch']);
 
 // Bump up the Version (patch)
 gulp.task('bump', function(){
-  console.log(arguments);
   gulp.src(['bower.json','package.json'])
   .pipe(bump())
   .pipe(gulp.dest('./'));

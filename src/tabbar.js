@@ -67,7 +67,6 @@
     } else {
       this.selectedIndicator.style.width = 100 / this.tabs.length + '%';
     }
-    console.log(this.selectedIndicator.style.width,this.selectedIndicator.style.height);
     this.selectHandler = delegate('brick-tabbar-tab', function(){
       _selectTab(this);
     });
