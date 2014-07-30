@@ -11,7 +11,7 @@
     "brick",
     "webcomponents"
   ],
-  "license": "MIT",
+  "license": "ISC",
   "ignore": [
     "**/.*",
     "node_modules",
@@ -21,7 +21,7 @@
   ],
   "dependencies": {
     "platform": "Polymer/platform",
-    "brick-common": "dotch/brick-common#master"
+    "brick-common": "brick-common"
   },
   "devDependencies": {
     "brick-deck": "mozbrick/brick-deck"
