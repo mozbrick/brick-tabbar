@@ -23,7 +23,11 @@
 3. Start using it:
 
     ```html
-    <brick-tabbar></brick-tabbar>
+    <brick-tabbar>
+      <brick-tabbar-tab>1</brick-tabbar-tab>
+      <brick-tabbar-tab>2</brick-tabbar-tab>
+      <brick-tabbar-tab>3</brick-tabbar-tab>
+    </brick-tabbar>
     ```
 
 ## brick-tabbar details
