@@ -8,8 +8,11 @@
     "elements",
     "x-tag"
   ],
-  "main":[
+  "main": [
     "styles/mixins.styl",
     "styles/params.styl"
-  ]
+  ],
+  "dependencies": {
+    "font-awesome": "~4.1.0"
+  }
 }
