@@ -64,8 +64,10 @@ responsifyHost(selector, attr, content) {
   _vertical() {
     border-top: none;
     border-right: 1px solid $color-iota;
+    padding-left: $dim-small;
     ::content brick-tabbar-tab {
       border-bottom: 1px solid $color-iota;
+      text-align: left;
       &:last-of-type {
         border: none;
       }
@@ -87,10 +89,6 @@ responsifyHost(selector, attr, content) {
   position: relative;
   font-style: italic;
   color: $color-epsilon;
-  .fa {
-    font-size: 30px;
-    line-height: 45px;
-  }
   &:active {
     transition: none;
     opacity: 0.3;
