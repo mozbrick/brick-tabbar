@@ -1,8 +1,8 @@
 {
   "name": "brick-tabbar",
-  "version": "0.0.0",
-  "description": "A tabbar component.",
-  "main": "brick-tabbar.html",
+  "version": "0.1.0",
+  "description": "A Brick tabbar component.",
+  "main": "dist/brick-tabbar.html",
   "scripts": {
     "test": "./node_modules/karma/bin/karma start karma.conf.js --single-run"
   },
@@ -23,6 +23,7 @@
   "devDependencies": {
     "chai": "^1.9.1",
     "gulp": "^3.7.0",
+    "gulp-bower-dist": "^0.1.1",
     "gulp-bump": "^0.1.8",
     "gulp-concat": "^2.2.0",
     "gulp-connect": "^2.0.5",
@@ -38,8 +39,7 @@
     "karma-chai": "^0.1.0",
     "karma-firefox-launcher": "^0.1.3",
     "karma-mocha": "^0.1.3",
-    "mocha": "^1.20.1",
-    "gulp-bower-dist": "^0.1.1"
+    "mocha": "^1.20.1"
   },
   "dependencies": {}
 }

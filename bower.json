@@ -1,11 +1,11 @@
 {
   "name": "brick-tabbar",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "homepage": "https://github.com/mozbrick/brick-tabbar",
   "authors": [
     "mozilla"
   ],
-  "description": "A tabbar component.",
+  "description": "A Brick tabbar component.",
   "main": "src/brick-tabbar.html",
   "keywords": [
     "brick",
@@ -21,9 +21,6 @@
   ],
   "dependencies": {
     "platform": "Polymer/platform",
-    "brick-common": "brick-common"
-  },
-  "devDependencies": {
-    "brick-deck": "mozbrick/brick-deck"
+    "brick-common": "~0.1.3"
   }
 }
