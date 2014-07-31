@@ -1,6 +1,7 @@
 /* jshint node:true */
 'use strict';
 
+var bowerDist = require('gulp-bower-dist');
 var bump = require('gulp-bump');
 var concat = require('gulp-concat');
 var connect = require('gulp-connect');
@@ -8,11 +9,10 @@ var ghpages = require('gulp-gh-pages');
 var gulp = require('gulp');
 var helptext = require('gulp-helptext');
 var jshint = require('gulp-jshint');
-var rm = require('gulp-rm');
 var rename = require('gulp-rename');
+var rm = require('gulp-rm');
 var stylus = require('gulp-stylus');
 var vulcanize = require('gulp-vulcanize');
-var bowerDist = require('gulp-bower-dist');
 
 var paths = {
   'main': 'src/brick-tabbar.html',
@@ -88,7 +88,6 @@ gulp.task('connect', function() {
     port: 3001
   });
 });
-
 
 gulp.task('watch', function () {
   gulp.watch(paths.scripts, ['lint']);
