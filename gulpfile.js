@@ -20,6 +20,7 @@ var paths = {
   'stylesheets': 'src/*.styl',
   'themes': 'src/themes/**/*.styl',
   'src': 'src/**/*',
+  'dist': 'dist/**/*',
   'index': 'index.html',
   'bowerComponents': 'bower_components/**/*',
 };

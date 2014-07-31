@@ -6,7 +6,7 @@
     "mozilla"
   ],
   "description": "A Brick tabbar component.",
-  "main": "src/brick-tabbar.html",
+  "main": "dist/brick-tabbar.html",
   "keywords": [
     "brick",
     "webcomponents"
