@@ -19,7 +19,7 @@ var paths = {
   'scripts': 'src/*.js',
   'stylesheets': 'src/*.styl',
   'themes': 'src/themes/**/*.styl',
-  'src': 'src/*',
+  'src': 'src/**/*',
   'index': 'index.html',
   'bowerComponents': 'bower_components/**/*',
 };
@@ -90,9 +90,7 @@ gulp.task('connect', function() {
 });
 
 gulp.task('watch', function () {
-  gulp.watch(paths.scripts, ['lint']);
-  gulp.watch(paths.stylesheets, ['build']);
-  gulp.watch(paths.themes, ['build']);
+  gulp.watch(paths.src, ['build']);
 });
 
 // do a build, start a server, watch for changes
@@ -121,7 +119,7 @@ gulp.task('help', helptext({
 gulp.task('deploy', function () {
   gulp.src([
     paths.index,
-    paths.src,
+    paths.dist,
     paths.bowerComponents
   ],{base:'./'})
     .pipe(ghpages());
