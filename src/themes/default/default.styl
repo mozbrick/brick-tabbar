@@ -90,6 +90,9 @@ responsifyHost(selector, attr, content) {
     transition: none;
     opacity: 0.3;
   }
+  &[selected] {
+    color: $highlight-color;
+  }
   &[selected]:active {
     background: transparent;
   }
