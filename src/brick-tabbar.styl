@@ -50,9 +50,8 @@ responsifyHost(selector, attr, content) {
   white-space: nowrap;
   margin: 0;
   padding: 0;
-  flexbox();
+  display: flex;
   position: relative;
-  // vertical tabbar
   _vertical() {
     flex-direction: column;
   }
@@ -60,8 +59,8 @@ responsifyHost(selector, attr, content) {
 }
 
 ::content brick-tabbar-tab {
-  flex(1);
-  box-sizing(border-box);
+  flex: 1;
+  box-sizing: border-box;
   display: inline-block;
   cursor: pointer
   text-align: center;

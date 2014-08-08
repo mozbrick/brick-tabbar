@@ -13,6 +13,7 @@ var rename = require('gulp-rename');
 var rm = require('gulp-rm');
 var stylus = require('gulp-stylus');
 var vulcanize = require('gulp-vulcanize');
+var prefix = require('gulp-autoprefixer');
 
 var paths = {
   'main': 'src/brick-tabbar.html',
@@ -35,12 +36,14 @@ gulp.task('styles', function() {
   return gulp.src(paths.stylesheets)
     .pipe(stylus())
     .pipe(concat('brick-tabbar.css'))
+    .pipe(prefix("last 2 versions", "Firefox >= 18", "ie >= 10"))
     .pipe(gulp.dest('src'));
 });
 
 gulp.task('themes', function() {
   return gulp.src(paths.themes)
     .pipe(stylus())
+    .pipe(prefix("last 2 versions", "Firefox >= 18", "ie >= 10"))
     .pipe(gulp.dest('src/themes'));
 });
 
