@@ -4,7 +4,9 @@
     if (tabEl.parentNode.nodeName.toLowerCase() === 'brick-tabbar') {
       var targetEvent = tabEl.targetEvent;
       var target = tabEl.targetElement;
-      target.dispatchEvent(new CustomEvent(targetEvent, {'bubbles': true}));
+      if (target) {
+        target.dispatchEvent(new CustomEvent(targetEvent, {'bubbles': true}));
+      }
     }
   }
 
