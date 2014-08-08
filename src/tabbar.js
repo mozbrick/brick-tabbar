@@ -33,9 +33,11 @@
     var indicator = tabbar.selectedIndicator;
 
     if (tabbar.hasAttribute('vertical')) {
+      tabbar.selectedIndicator.style.height = 100 / tabbar.tabs.length + '%';
       indicator.style.webkitTransform = 'translateY(' + 100 * index + '%)';
       indicator.style.transform = 'translateY(' + 100 * index + '%)';
     } else {
+      tabbar.selectedIndicator.style.width = 100 / tabbar.tabs.length + '%';
       indicator.style.webkitTransform = 'translateX(' + 100 * index + '%)';
       indicator.style.transform = 'translateX(' + 100 * index + '%)';
     }
@@ -43,7 +45,7 @@
 
   var BrickTabbarElementPrototype = Object.create(HTMLElement.prototype);
 
-  BrickTabbarElementPrototype.createdCallback = function() {
+  BrickTabbarElementPrototype.attachedCallback = function() {
 
     var importDoc = currentScript.ownerDocument;
     var template = importDoc.querySelector('#brick-tabbar-template');
@@ -63,18 +65,40 @@
     var shadowRoot = this.createShadowRoot();
     shadowRoot.appendChild(template.content.cloneNode(true));
 
+    // listen to click and select events
     this.selectedIndicator = shadowRoot.querySelector('.selected-indicator');
-    if (this.hasAttribute('vertical')) {
-      this.selectedIndicator.style.height = 100 / this.tabs.length + '%';
-    } else {
-      this.selectedIndicator.style.width = 100 / this.tabs.length + '%';
-    }
     this.selectHandler = delegate('brick-tabbar-tab', function(){
       _selectTab(this);
     });
-
     this.addEventListener('click', this.selectHandler);
     this.addEventListener('select', this.selectHandler);
+
+    // initially set the selected tab,
+    // if none has the attribute [selected]
+    // then select the first one
+    var tabEl = this.selectedTab;
+    if (tabEl) {
+      _selectTab(tabEl);
+    } else {
+      var firstTab = this.querySelector('brick-tabbar-tab');
+      if (firstTab) {
+        firstTab.dispatchEvent(new CustomEvent('select', {
+          'bubbles': true
+        }));
+      }
+    }
+
+    // check for new tabs being added and call selectTab() again,
+    // to correct the size of the indicator
+    var observer = new MutationObserver(function(mutations) {
+      mutations.forEach(function(mutation) {
+        var tabbar = mutation.target;
+        if (mutation.type === "childList") {
+          _selectTab(tabbar.selectedTab);
+        }
+      });
+    });
+    observer.observe(this, { childList: true });
   };
 
   BrickTabbarElementPrototype.detachedCallback = function() {
@@ -95,6 +119,11 @@
       get: function() {
         var tabList = this.querySelectorAll('brick-tabbar-tab');
         return Array.prototype.slice.call(tabList);
+      }
+    },
+    'selectedTab': {
+      get: function() {
+        return this.querySelector('brick-tabbar-tab[selected]');
       }
     }
   });
