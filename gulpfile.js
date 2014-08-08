@@ -55,7 +55,7 @@ gulp.task('rename', ['vulcanize'], function() {
     .pipe(gulp.dest('dist'));
 });
 
-gulp.task('clean', ['vulcanize', 'rename'], function() {
+gulp.task('clean', ['dist'], function() {
   gulp.src(['src/*.css', 'src/themes/**/*.css'])
     .pipe(rm());
 });
@@ -75,7 +75,7 @@ gulp.task('vulcanize', ['styles','themes'], function() {
     .pipe(gulp.dest('dist'));
 });
 
-gulp.task('dist', ['vulcanize'], function () {
+gulp.task('dist', ['rename'], function () {
   return gulp.src('dist/*.local.html')
     .pipe(bowerDist())
     .pipe(rename(function(path) {
@@ -85,7 +85,7 @@ gulp.task('dist', ['vulcanize'], function () {
 });
 
 // build scripts and styles
-gulp.task('build', ['lint','styles','themes','vulcanize', 'rename','dist','clean']);
+gulp.task('build', ['lint','styles','themes','vulcanize','rename','dist','clean']);
 
 gulp.task('connect', function() {
   connect.server({
