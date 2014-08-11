@@ -54,11 +54,7 @@
     },
     'targetElement': {
       get: function() {
-        if (this.overrideElement) {
-          return this.overrideElement;
-        } else {
-          return document.getElementById(this.target);
-        }
+        return this.overrideElement ||  document.getElementById(this.target);
       },
       set: function(newVal) {
         this.overrideElement = newVal;
