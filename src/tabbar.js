@@ -128,8 +128,10 @@
     }
   });
 
-  window.BrickTabbarElement = document.registerElement('brick-tabbar', {
-    prototype: BrickTabbarElementPrototype
-  });
+  if (!window.BrickTabbarElement) {
+    window.BrickTabbarElement = document.registerElement('brick-tabbar', {
+      prototype: BrickTabbarElementPrototype
+    });
+  }
 
 })();
