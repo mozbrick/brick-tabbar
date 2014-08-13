@@ -67,8 +67,10 @@
     }
   });
 
-  window.BrickTabbarTabElement = document.registerElement('brick-tabbar-tab', {
-    prototype: BrickTabbarTabElementPrototype
-  });
+  if (!window.BrickTabbarTabElement) {
+    window.BrickTabbarTabElement = document.registerElement('brick-tabbar-tab', {
+      prototype: BrickTabbarTabElementPrototype
+    });
+  }
 
 })();
