@@ -9,11 +9,11 @@ var ghpages = require('gulp-gh-pages');
 var gulp = require('gulp');
 var helptext = require('gulp-helptext');
 var jshint = require('gulp-jshint');
+var prefix = require('gulp-autoprefixer');
 var rename = require('gulp-rename');
 var rm = require('gulp-rm');
 var stylus = require('gulp-stylus');
 var vulcanize = require('gulp-vulcanize');
-var prefix = require('gulp-autoprefixer');
 
 var paths = {
   'main': 'src/brick-tabbar.html',
