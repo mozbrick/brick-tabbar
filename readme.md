@@ -43,6 +43,7 @@ Attribute     | Options     | Default      | Description
 Property            | Type        | Default      | Description
 ---                 | ---         | ---          | ---
 `target-event`      | *string*    | `reveal`     | Corresponds to the `target-event` attribute.
+`indicator`         | *string*    | null         | A value of `disabled` will prevent animation of the indicator.
 `tabs` (getter only)| *array*     | -            | Returns a list of the `<brick-tabbar-tab>` elements in the `<brick-tabbar>`.
 
 ## brick-tabbar-tab details

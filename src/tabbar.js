@@ -29,6 +29,13 @@
     tabEl.setAttribute('selected', true);
 
     // move the indicator
+    if (tabbar.hasIndicator) {
+      _placeIndicator(tabEl);
+    }
+  }
+
+  function _placeIndicator(tabEl) {
+    var tabbar = tabEl.parentNode;
     var index = tabbar.tabs.indexOf(tabEl);
     var indicator = tabbar.selectedIndicator;
 
@@ -124,6 +131,11 @@
     'selectedTab': {
       get: function() {
         return this.querySelector('brick-tabbar-tab[selected]');
+      }
+    },
+    'hasIndicator': {
+      get: function() {
+        return this.getAttribute('indicator') !== 'disabled';
       }
     }
   });
