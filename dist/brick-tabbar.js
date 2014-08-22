@@ -102,7 +102,7 @@
     tabEl.setAttribute('selected', true);
 
     // move the indicator
-    if (tabbar.hasIndicator) {
+    if (!tabbar.noindicator) {
       _placeIndicator(tabEl);
     }
   }
@@ -206,9 +206,9 @@
         return this.querySelector('brick-tabbar-tab[selected]');
       }
     },
-    'hasIndicator': {
+    'noindicator': {
       get: function() {
-        return this.getAttribute('indicator') !== 'disabled';
+        return this.hasAttribute('noindicator');
       }
     }
   });
