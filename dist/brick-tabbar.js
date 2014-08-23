@@ -102,9 +102,7 @@
     tabEl.setAttribute('selected', true);
 
     // move the indicator
-    if (!tabbar.noindicator) {
-      _placeIndicator(tabEl);
-    }
+    _placeIndicator(tabEl);
   }
 
   function _placeIndicator(tabEl) {
@@ -121,6 +119,13 @@
       indicator.style.webkitTransform = 'translateX(' + 100 * index + '%)';
       indicator.style.transform = 'translateX(' + 100 * index + '%)';
     }
+  }
+
+  function _hideIndicator(tabbar) {
+    tabbar.selectedIndicator.style.display = "none";
+  }
+  function _showIndicator(tabbar) {
+    tabbar.selectedIndicator.style.display = "block";
   }
 
   var BrickTabbarElementPrototype = Object.create(HTMLElement.prototype);
@@ -168,6 +173,11 @@
       }
     }
 
+    // initially show/hide the indicator
+    if (this.noindicator) {
+      _hideIndicator(this);
+    }
+
     // check for new tabs being added and call selectTab() again,
     // to correct the size of the indicator
     var observer = new MutationObserver(function(mutations) {
@@ -179,6 +189,21 @@
       });
     });
     observer.observe(this, { childList: true });
+
+    // check for the noindicator property being added/removed
+    var observer2 = new MutationObserver(function(mutations) {
+      mutations.forEach(function(mutation) {
+        if (mutation.type === "attributes" && mutation.attributeName === 'noindicator') {
+          var tabbar = mutation.target;
+          if (tabbar.noindicator) {
+            _hideIndicator(tabbar);
+          } else {
+            _showIndicator(tabbar);
+          }
+        }
+      });
+    });
+    observer2.observe(this, { attributes: true });
   };
 
   BrickTabbarElementPrototype.detachedCallback = function() {
