@@ -13,14 +13,13 @@
   var BrickTabbarTabElementPrototype = Object.create(HTMLElement.prototype);
 
   BrickTabbarTabElementPrototype.attachedCallback = function() {
-    this.addEventListener('click', function(e) {
+    var callback = function(e) {
       var tabEl = e.currentTarget;
       _onTapbarTabClick(tabEl);
-    });
-    this.addEventListener('select', function(e) {
-      var tabEl = e.currentTarget;
-      _onTapbarTabClick(tabEl);
-    });
+    };
+
+    this.addEventListener('click', callback);
+    this.addEventListener('select', callback);
   };
 
   BrickTabbarTabElementPrototype.select = function() {
