@@ -100,7 +100,7 @@ While developing your component, there is a development server that will watch y
 To run the development server:
 
 * Run `gulp server`
-* Navigate to `http:localhost:3001`
+* Navigate to `http://localhost:3001`
 
 To simply build and lint your code, run `gulp build`.
 
